@@ -14,6 +14,12 @@ while True:
     response = requests.get(f"https://api.frankfurter.app/latest?from={cur1}&to={cur2}")
 
     data = response.json()
+    
+    if "rates" not in data:
+        print("Sorry, this currency is not supported.")
+        print()
+        continue
+        
     rate = data["rates"][cur2]
 
     final_amount = amount*rate
